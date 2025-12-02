@@ -1,0 +1,13 @@
+# Ignore model weights
+models/*.pt
+
+# Ignore Python cache folders
+__pycache__/
+*/__pycache__/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore temporary system files
+.DS_Store
+Thumbs.db
