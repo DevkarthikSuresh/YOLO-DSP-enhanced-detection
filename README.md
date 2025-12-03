@@ -5,7 +5,7 @@ Improving YOLO confidence using classical DSP enhancement (Denoising → CLAHE �
 ## 1. Overview
 
 This project explores whether *classical Digital Signal Processing (DSP)* techniques can
-improve the performance of modern deep-learning–based object detectors such as YOLO.
+improve the performance of modern deep learning based object detectors such as YOLO.
 Satellite and aerial imagery often suffers from:
 
 - haze, smoke, and atmospheric scattering  
@@ -25,7 +25,7 @@ image *before* feeding it into YOLO:
 This simple, lightweight pre-processing improved YOLO’s detection confidence on wildfire
 datasets by **~9% on average**, with clearer smoke boundaries and more stable bounding boxes.
 
-The approach is model-agnostic and can be applied to any YOLO variant or object detection
+The approach is model agnostic and can be applied to any YOLO variant or object detection
 backbone.
 
 ---
@@ -64,10 +64,10 @@ These degradations often lead to weak confidence scores or missed detections.
 Before sending the image to YOLO, we apply a sequence of classical DSP operations:
 
 - **Non-Local Means Denoising:**  
-  Removes high-frequency noise while preserving edges.
+  Removes high frequency noise while preserving edges.
 
 - **CLAHE (Contrast Limited Adaptive Histogram Equalization):**  
-  Enhances local contrast in the L-channel of the LAB color space, improving visibility
+  Enhances local contrast in the L channel of the LAB color space, improving visibility
   in hazy areas.
 
 - **Sharpening (Unsharp Masking):**  
@@ -96,20 +96,20 @@ Both the raw and enhanced image detections are saved, allowing quantitative comp
   <img src="assets/pipelineimg.png" width="750"/>
 </p>
 
-<p align="center"><b>Figure 1:</b> DSP-enhanced pipeline for improved YOLO detection.</p>
+<p align="center"><b>Figure 1:</b> DSP enhanced pipeline for improved YOLO detection.</p>
 
 ---
 
 ## 3. Before / After Comparison 
 
 The DSP enhancement significantly improves YOLO’s ability to detect smoke regions in challenging wildfire imagery.  
-Below is a qualitative comparison between **raw** and **DSP-enhanced** images.
+Below is a qualitative comparison between **raw** and **DSP enhanced** images.
 
 | Raw YOLO Detection | Enhanced YOLO Detection |
 |--------------------|------------------------|
 | ![Raw](results/raw_overlay.png) | ![Enhanced](results/enh_overlay.png) |
 
-**Figure 2:** DSP pre-processing produces clearer edges and stronger detection confidence, especially in hazy or low-contrast regions.
+**Figure 2:** DSP preprocessing produces clearer edges and stronger detection confidence, especially in hazy or low-contrast regions.
 
 ---
 
@@ -130,7 +130,7 @@ Below is a qualitative comparison between **raw** and **DSP-enhanced** images.
 YOLOv8 serves as the detection backbone for this project. To ensure a fair and controlled evaluation, the **same model**, **same thresholds**, and **same inference settings** are applied to both the raw and DSP-enhanced images.
 
 #### 🔹 Consistent Model & Settings
-- Model: Custom fire–smoke YOLOv8 model (`best.pt`)
+- Model: Custom fire smoke YOLOv8 model (`best.pt`)
 - Confidence threshold: `conf = 0.25`
 - IoU threshold: `iou = 0.50`
 - Identical preprocessing (OpenCV BGR input)
@@ -183,7 +183,7 @@ results/
 ---
 
 ## 8. Results Summary
-DSP pre-processing provided measurable improvement in YOLOv8 confidence:
+DSP preprocessing provided measurable improvement in YOLOv8 confidence:
 
 Confidence gain = (0.7143 − 0.6543) / 0.6543 ≈ 9.2%
 
